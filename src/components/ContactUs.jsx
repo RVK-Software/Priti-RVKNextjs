@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import toast from "react-hot-toast";
 //.env
 
 const ContactSection = () => {
@@ -19,23 +20,24 @@ const ContactSection = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  const onSubmit = async (data) => {
-    try {
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_API}/contact`,
-        data,
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      // optional: toast / alert
-      alert("Message sent successfully!");
-      reset();
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong. Please try again.");
-    }
-  };
+ const onSubmit = async (data) => {
+  try {
+    await axios.post(
+      `${process.env.NEXT_PUBLIC_BACKEND_API}/contact`,
+      data,
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    toast.success("Message sent successfully! We'll contact you shortly.");
+    reset();
+  } catch (err) {
+    console.error(err);
+    toast.error("Something went wrong. Please try again.");
+  }
+};
+
 
   return (
     <div className="bg-white shadow-xl rounded-2xl grid lg:grid-cols-2 overflow-hidden">

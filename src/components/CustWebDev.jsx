@@ -38,7 +38,7 @@ const CustWebDev = () => {
         {/* Heading */}
         <div className="text-center mb-4">
           
-          <h2 className="text-2xl sm:text-[18px] max-w-auto lg:text-5xl font-bold text-gray-900 leading-tight">
+          <h2 className="text-xl sm:text-[5px] max-w-auto lg:text-5xl font-bold text-gray-900 leading-tight">
             Customized Web Development Services 
           </h2>
         </div>

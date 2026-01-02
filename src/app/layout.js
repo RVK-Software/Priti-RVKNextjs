@@ -2,6 +2,9 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import FloatingContact from "@/components/FloatingContact";
+import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -25,6 +28,31 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <Footer />
+         <Toaster
+          position="top-right"
+          reverseOrder={false}
+          toastOptions={{
+            style: {
+              borderRadius: "12px",
+              background: "#0f172a",
+              color: "#fff",
+            },
+            success: {
+              iconTheme: {
+                primary: "#f97316",
+                secondary: "#fff",
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: "#ef4444",
+                secondary: "#fff",
+              },
+            },
+          }}
+        />
+        <FloatingContact />
+        <FloatingWhatsApp />
       </body>
     </html>
   );

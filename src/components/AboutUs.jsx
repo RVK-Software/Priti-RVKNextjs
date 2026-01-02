@@ -9,7 +9,7 @@ const AboutUs = ({ showButton = true }) => {
         <div className="grid lg:grid-cols-[60%_40%] gap-2 items-center justify-around">
           
           {/* CONTENT SECTION */}
-          <div className="space-y-3 px-4 sm:px-6  lg:px-0">
+          <div className="space-y-3 px-4 sm:px-3  lg:px-0">
             <h2 className="text-[24px] text-start lg:text-5xl font-bold text-gray-800 leading-snug">
               Welcome to <span className="text-orange-400">RVK Software</span>
             </h2>

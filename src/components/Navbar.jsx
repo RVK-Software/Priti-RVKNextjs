@@ -13,22 +13,58 @@ import Image from "next/image";
 
 /* SERVICES MENU (UX only, all redirect to /services) */
 const servicesMenu = [
-  { label: "Social Media Page Management", path: "/marketing-services" },
-  { label: "Paid Ads", path: "/marketing-services" },
-  { label: "Influencer Marketing", path: "/marketing-services" },
-  { label: "Graphic Designing", path: "/marketing-services" },
-  { label: "Search Engine Optimization", path: "/marketing-services" },
-  { label: "Podcast Services", path: "/marketing-services" },
+  {
+    id: "smm",
+    label: "Social Media Page Management",
+    path: "/marketing-services",
+  },
+  { id: "ads", label: "Paid Ads", path: "/marketing-services" },
+  {
+    id: "influencer",
+    label: "Influencer Marketing",
+    path: "/marketing-services",
+  },
+  { id: "design", label: "Graphic Designing", path: "/marketing-services" },
+  {
+    id: "seo",
+    label: "Search Engine Optimization",
+    path: "/marketing-services",
+  },
+  { id: "podcast", label: "Podcast Services", path: "/marketing-services" },
 ];
 
 /* TECHNOLOGIES MENU */
 const technologiesMenu = [
-  { label: "Web Application Development Custom", path: "/technologies" },
-  { label: "Mobile Application Development", path: "/technologies" },
-  { label: "E-Commerce Solutions Development", path: "/technologies" },
-  { label: "Custom Software Development", path: "/technologies" },
-  { label: "AI & Machine Learning Engineering", path: "/technologies" },
-  { label: "Cloud Computing & DevOps Services", path: "/technologies" },
+  {
+    id: "web",
+    label: "Web Application Development Custom",
+    path: "/technologies",
+  },
+  {
+    id: "mobile",
+    label: "Mobile Application Development",
+    path: "/technologies",
+  },
+  {
+    id: "ecommerce",
+    label: "E-Commerce Solutions Development",
+    path: "/technologies",
+  },
+  {
+    id: "software",
+    label: "Custom Software Development",
+    path: "/technologies",
+  },
+  {
+    id: "ai",
+    label: "AI & Machine Learning Engineering",
+    path: "/technologies",
+  },
+  {
+    id: "cloud",
+    label: "Cloud Computing & DevOps Services",
+    path: "/technologies",
+  },
 ];
 
 const Navbar = () => {
@@ -49,7 +85,9 @@ const Navbar = () => {
           </div>
           <div className="flex items-center gap-2">
             <FaMapMarkerAlt className="text-orange-400" />
-            <span className="text-[14px] lg:text-[16px]">Jaipur, Rajasthan</span>
+            <span className="text-[14px] lg:text-[16px]">
+              Jaipur, Rajasthan
+            </span>
           </div>
         </div>
       </div>
@@ -123,7 +161,7 @@ const Navbar = () => {
                 <div className="absolute top-full w-64 bg-black text-white rounded-md shadow-lg">
                   {technologiesMenu.map((item) => (
                     <Link
-                      key={item.path}
+                      key={item.id}
                       href={item.path}
                       className="block px-4 py-3 text-sm hover:bg-gray-900 hover:text-orange-400"
                     >
@@ -154,141 +192,141 @@ const Navbar = () => {
       </header>
 
       {/* MOBILE MENU (GLASSMORPHIC, PARTIAL HEIGHT) */}
-    
-{menuOpen && (
-  <div className="fixed top-24 left-1/2 -translate-x-1/2 w-[92%] bg-white/40 backdrop-blur-xl shadow-2xl rounded-2xl z-50 lg:hidden">
-    <ul className="px-6 py-6 space-y-6 text-base font-medium text-gray-900">
-      {/* Home */}
-      <li>
-        <Link
-          href="/"
-          onClick={() => setMenuOpen(false)}
-          className="block w-full py-2 px-3 hover:text-orange-400"
-        >
-          Home
-        </Link>
-      </li>
 
-      {/* About */}
-      <li>
-        <Link
-          href="/about"
-          onClick={() => setMenuOpen(false)}
-          className="block w-full py-2 px-3 hover:text-orange-400"
-        >
-          About Us
-        </Link>
-      </li>
+      {menuOpen && (
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 w-[92%] bg-white/40 backdrop-blur-xl shadow-2xl rounded-2xl z-50 lg:hidden">
+          <ul className="px-6 py-6 space-y-6 text-base font-medium text-gray-900">
+            {/* Home */}
+            <li>
+              <Link
+                href="/"
+                onClick={() => setMenuOpen(false)}
+                className="block w-full py-2 px-3 hover:text-orange-400"
+              >
+                Home
+              </Link>
+            </li>
 
-      {/* Marketing SERVICES */}
-      <li>
-        <div className="flex justify-between items-center">
-          <Link
-            href="/marketing-services"
-            onClick={() => setMenuOpen(false)}
-            className="flex-1 block py-2 px-3 hover:text-orange-400"
-          >
-            Marketing
-          </Link>
+            {/* About */}
+            <li>
+              <Link
+                href="/about"
+                onClick={() => setMenuOpen(false)}
+                className="block w-full py-2 px-3 hover:text-orange-400"
+              >
+                About Us
+              </Link>
+            </li>
 
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setMobileServicesOpen(!mobileServicesOpen);
-            }}
-            className="p-2"
-          >
-            <FaChevronDown
-              className={`transition-transform ${
-                mobileServicesOpen ? "rotate-180" : ""
-              }`}
-            />
-          </button>
-        </div>
-
-        {mobileServicesOpen && (
-          <ul className="mt-3 space-y-3 text-sm pl-4 text-gray-700">
-            {servicesMenu.map((item) => (
-              <li key={item.label}>
+            {/* Marketing SERVICES */}
+            <li>
+              <div className="flex justify-between items-center">
                 <Link
-                  href={item.path}
+                  href="/marketing-services"
                   onClick={() => setMenuOpen(false)}
-                  className="block w-full py-1 px-2 hover:text-orange-400"
+                  className="flex-1 block py-2 px-3 hover:text-orange-400"
                 >
-                  {item.label}
+                  Marketing
                 </Link>
-              </li>
-            ))}
-          </ul>
-        )}
-      </li>
 
-      {/* TECHNOLOGIES */}
-      <li>
-        <div className="flex justify-between items-center">
-          <Link
-            href="/technologies"
-            onClick={() => setMobileTechOpen(!mobileTechOpen)}
-            className="flex-1 block py-2 px-3 hover:text-orange-400"
-          >
-            Technologies
-          </Link>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setMobileTechOpen(!mobileTechOpen);
-            }}
-            className="p-2"
-          >
-            <FaChevronDown
-              className={`transition-transform ${
-                mobileTechOpen ? "rotate-180" : ""
-              }`}
-            />
-          </button>
-        </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setMobileServicesOpen(!mobileServicesOpen);
+                  }}
+                  className="p-2"
+                >
+                  <FaChevronDown
+                    className={`transition-transform ${
+                      mobileServicesOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+              </div>
 
-        {mobileTechOpen && (
-          <ul className="mt-3 space-y-3 text-sm pl-4 text-gray-700">
-            {technologiesMenu.map((item) => (
-              <li key={item.path}>
+              {mobileServicesOpen && (
+                <ul className="mt-3 space-y-3 text-sm pl-4 text-gray-700">
+                  {servicesMenu.map((item) => (
+                    <li key={item.label}>
+                      <Link
+                        href={item.path}
+                        onClick={() => setMenuOpen(false)}
+                        className="block w-full py-1 px-2 hover:text-orange-400"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+
+            {/* TECHNOLOGIES */}
+            <li>
+              <div className="flex justify-between items-center">
                 <Link
-                  href={item.path}
-                  onClick={() => setMenuOpen(false)}
-                  className="block w-full py-1 px-2 hover:text-orange-400"
+                  href="/technologies"
+                  onClick={() => setMobileTechOpen(!mobileTechOpen)}
+                  className="flex-1 block py-2 px-3 hover:text-orange-400"
                 >
-                  {item.label}
+                  Technologies
                 </Link>
-              </li>
-            ))}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setMobileTechOpen(!mobileTechOpen);
+                  }}
+                  className="p-2"
+                >
+                  <FaChevronDown
+                    className={`transition-transform ${
+                      mobileTechOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+              </div>
+
+              {mobileTechOpen && (
+                <ul className="mt-3 space-y-3 text-sm pl-4 text-gray-700">
+                  {technologiesMenu.map((item) => (
+                    <li key={item.path}>
+                      <Link
+                        href={item.path}
+                        onClick={() => setMenuOpen(false)}
+                        className="block w-full py-1 px-2 hover:text-orange-400"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+
+            {/* Career */}
+            <li>
+              <Link
+                to="/career"
+                onClick={() => setMenuOpen(false)}
+                className="block w-full py-2 px-3 hover:text-orange-400"
+              >
+                Career
+              </Link>
+            </li>
+
+            {/* Contact */}
+            <li>
+              <Link
+                to="/contact"
+                onClick={() => setMenuOpen(false)}
+                className="block w-full py-2 px-3 hover:text-orange-400"
+              >
+                Contact Us
+              </Link>
+            </li>
           </ul>
-        )}
-      </li>
-
-      {/* Career */}
-      <li>
-        <Link
-          to="/career"
-          onClick={() => setMenuOpen(false)}
-          className="block w-full py-2 px-3 hover:text-orange-400"
-        >
-          Career
-        </Link>
-      </li>
-
-      {/* Contact */}
-      <li>
-        <Link
-          to="/contact"
-          onClick={() => setMenuOpen(false)}
-          className="block w-full py-2 px-3 hover:text-orange-400"
-        >
-          Contact Us
-        </Link>
-      </li>
-    </ul>
-  </div>
-)}
+        </div>
+      )}
     </>
   );
 };
