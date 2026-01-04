@@ -306,7 +306,7 @@ const Navbar = () => {
             {/* Career */}
             <li>
               <Link
-                to="/career"
+                href="/career"
                 onClick={() => setMenuOpen(false)}
                 className="block w-full py-2 px-3 hover:text-orange-400"
               >
@@ -317,7 +317,7 @@ const Navbar = () => {
             {/* Contact */}
             <li>
               <Link
-                to="/contact"
+                href="/contact"
                 onClick={() => setMenuOpen(false)}
                 className="block w-full py-2 px-3 hover:text-orange-400"
               >
